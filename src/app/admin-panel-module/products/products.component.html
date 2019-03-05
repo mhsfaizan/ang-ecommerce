@@ -1,0 +1,12 @@
+<mat-progress-bar mode="indeterminate" style="margin:-10px" *ngIf="!isLoad"></mat-progress-bar>
+<section *ngIf="isLoad" id="products">
+  <div class="images" *ngIf="products" >
+    <a  routerLink="/adminpanel/admin/products/product/{{product._id}}" class="image"  *ngFor="let product of products">
+      <img src="/assets/uploads/{{product.commonImages[0].filename}}" [alt]="product.productName" class="image-fit"  *ngIf="product.commonImages.length" />
+      <span>{{product.productName}}</span>
+    </a>
+  </div>
+  <div *ngIf="!(products && products.length)">
+    <mat-card>No Data Found</mat-card>
+  </div>
+</section>

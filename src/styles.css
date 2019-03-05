@@ -1,0 +1,175 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.container {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.images {
+    display: flex;
+    justify-content: initial;
+    flex-wrap: wrap;
+}
+
+.image {
+    flex-basis: calc(25% - 1rem);
+    margin-bottom: 1.5rem;
+    margin-right: 1rem;
+    box-shadow: 0 0 10px #555;
+}
+
+.image span {
+    text-align: center;
+    display: block;
+}
+
+.image-fit {
+    height: calc(100% - 30px);
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.pt {
+    padding-top: 1.5rem;
+}
+
+.pb {
+    padding-bottom: 1.5rem;
+}
+
+.login-container {
+    height: 100vh;
+    background-color: #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container>.box {
+    background: #fff;
+    width: 420px;
+    min-height: 350px;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.heading {
+    text-align: center;
+    color: #555;
+    margin: 0;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.products>.product {
+    height: 300px;
+    width: calc(19% - 1rem);
+    margin-right: 1rem
+}
+.products-botttom {
+    padding-left: 0.5rem;
+}
+.products-botttom >span{
+    font-size: 13px;
+}
+/* single product style */
+
+.product-container {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.product-container>.product-image {
+    flex-basis: 49%;
+    background-color: #eee;
+}
+
+.product-container>.product-image>.image {
+    width: calc(50% - 1rem);
+    height: 300px;
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+.product-container>.product-image>.image>.image-fit {
+    height: 100%;
+}
+
+.product-container>.product-info {
+    flex-basis: 49%;
+}
+
+.product-container h1, .product-container h2, .product-container span,.product-container p {
+    color: #555;
+}
+
+.product-container>.product-info h1 {
+    margin-bottom: 0;
+}
+
+.sizes, .colors {
+    display: table;
+    border-spacing: 4px 0;
+}
+
+.sizes>span, .colors>span {
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    border: 1px solid silver;
+    border-radius: 50%;
+    display: table-cell;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.colors>span {
+    height: 50px;
+    width: 50px;
+}
+
+.quantity span {
+    padding-left: 1rem;
+}
+
+.myactive {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+@media(max-width:768px) {
+    .product-container>.product-image {
+        flex-basis: 100%;
+    }
+}
+
+@media(max-width:900px) {
+    .image {
+        flex-basis: calc(49% - 1rem);
+    }
+}

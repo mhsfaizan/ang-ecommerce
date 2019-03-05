@@ -1,0 +1,12 @@
+<div class="products">
+  <a style="color:#555;text-decoration:none" routerLink="/app/men/top-wear/product/{{product._id}}"
+    *ngFor="let product of products" class="product">
+    <img src="/assets/uploads/{{product.commonImages[0].filename}}" class="image-fit" />
+    <div class="products-botttom">
+      <span><b>{{product.productName}}</b></span><br>
+      <span>{{product.brandName}}</span><br>
+      <span><b>Rs.{{product.attributes[0].sellingPrice}}</b></span>
+      &nbsp;<del>Rs.{{product.attributes[0].markedPrice}}</del>
+    </div>
+  </a>
+</div>

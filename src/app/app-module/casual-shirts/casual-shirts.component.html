@@ -1,0 +1,9 @@
+<mat-progress-bar mode="indeterminate" *ngIf="!isLoad"></mat-progress-bar>
+<section *ngIf="isLoad" class="container">
+  <div *ngIf="casualShirts || casualShirts.length">
+   <app-product [products]="casualShirts"></app-product>
+  </div>
+  <div *ngIf="!(casualShirts || casualShirts.length)">
+    <mat-card>No data Found</mat-card>
+  </div>
+</section>

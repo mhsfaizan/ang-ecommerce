@@ -1,0 +1,51 @@
+<mat-progress-bar mode="indeterminate" *ngIf="!isLoad"></mat-progress-bar>
+<section *ngIf="isLoad">
+  <div class="product-container" *ngIf="product">
+    <!-- <div class="product">
+      <img *ngFor="let image of product.commonImages" src="/assets/uploads/{{image.filename}}" width="50%"> 
+    </div>
+    <div style="flex-basis:48%">
+
+    </div> -->
+    <div class="product-image" *ngIf="!isAttributeMode">
+      <div class="image" *ngFor="let image of product.commonImages">
+        <img src="/assets/uploads/{{image.filename}}" class="image-fit">
+      </div>
+    </div>
+    <div class="product-image" *ngIf="isAttributeMode">
+      <div class="image" *ngFor="let myImage of product.attributes[attributeIndex].images">
+        <img src="/assets/uploads/{{myImage.filename}}" class="image-fit">
+      </div>
+    </div>
+    <div class="product-info">
+      <h1>{{product.productName}}</h1>
+      <span>{{product.brandName}}</span>
+      <hr>
+      <h2>Rs.{{product.attributes[attributeIndex].sellingPrice}} &nbsp;&nbsp;<del>
+          Rs.{{product.attributes[0].markedPrice}}</del>
+      </h2>
+      <h2>Sizes</h2>
+      <div class="sizes">
+        <span *ngFor="let attribute of product.attributes">{{attribute.size}}</span>
+      </div>
+      <h2>Colors</h2>
+      <div class="colors">
+        <span *ngFor="let attribute of product.attributes;let index=index"
+          [ngClass]="{'myactive':((index==attributeIndex)&&isAttributeMode)}"
+          (click)="changeToAttributeMode(index)">{{attribute.color}}</span>
+      </div>
+      <div class="quantity">
+        <h2>Quantity</h2>
+        <span>{{product.attributes[attributeIndex].quantity}}</span>
+      </div>
+      <div class="about-product">
+        <h2>About Product</h2>
+        <p>{{product.description}}</p>
+      </div>
+
+    </div>
+  </div>
+  <div *ngIf="!product">
+    <mat-card>No Data Found</mat-card>
+  </div>
+</section>

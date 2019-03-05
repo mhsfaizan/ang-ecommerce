@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>More About Product</h1>
+<div mat-dialog-content>
+  <form [formGroup]="priceForm">
+    <mat-form-field appearance="outline">
+      <mat-select placeholder="Sizes" formControlName="size">
+        <mat-option *ngFor="let size of sizes" [value]="size">
+          {{size}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-select placeholder="colors" formControlName="color">
+        <mat-option *ngFor="let color of colors" [value]="color">
+          {{color}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Marked Price</mat-label>
+      <input matInput placeholder="Marked Price" formControlName="markedPrice">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Selling Price</mat-label>
+      <input matInput placeholder="Selling Price" formControlName="sellingPrice">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Quantity</mat-label>
+      <input matInput placeholder="Quantity" formControlName="quantity">
+    </mat-form-field>
+    <div>
+      <button type="button" mat-raised-button (click)="input.click()">Images<mat-icon>add</mat-icon></button>
+      <input type="file" hidden #input multiple accept="image/*" (change)="addImage(images,input)">
+      <div class="images" *ngIf="images" style="margin-top: 1rem">
+        <div class="image" *ngFor="let image of images;let index=index">
+          <img [src]="image.url" class="image-fit" />
+          <button type="button" mat-mini-fab color="primary" (click)="removeImage(images,index)">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="priceForm.value"
+    [disabled]="priceForm.invalid">Ok</button>
+</div>

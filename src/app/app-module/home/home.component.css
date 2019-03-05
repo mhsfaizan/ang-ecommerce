@@ -1,0 +1,33 @@
+.discount{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.discount >  mat-card{
+    width: 30%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.discount >  mat-card span{
+    font-size: 2rem;
+}
+.home-category > h1{
+    text-align: center;
+    font-weight: 300;
+    margin: 0;
+}
+.image{
+    height: 300px;
+}
+.home-category{
+    background-color: #fff;
+}
+@media(max-width:768px){
+    .discount > mat-card{
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+}

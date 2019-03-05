@@ -1,0 +1,123 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">Link 1</a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="top-nav" color="accent" *ngIf="!(isHandset$ | async)">
+      <div class="left-nav">
+        <!-- men navigation -->
+        <a mat-button  [matMenuTriggerFor]="men">MEN</a>
+        <mat-menu #men="matMenu">
+          <button mat-menu-item [matMenuTriggerFor]="topWear">Top Wear</button>
+          <button mat-menu-item [matMenuTriggerFor]="bottomwear">Bottomwear</button>
+          <button mat-menu-item [matMenuTriggerFor]="mfootwear">Footwear</button>
+        </mat-menu>
+        <mat-menu #topWear="matMenu">
+          <button mat-menu-item routerLink="men/top-wear/formal-shirts">Formal Shirts</button>
+          <button mat-menu-item routerLink="men/top-wear/casual-shirts">Casual Shirts</button>
+          <button mat-menu-item>T-Shirts</button>
+        </mat-menu>
+        <mat-menu #bottomwear="matMenu">
+          <button mat-menu-item>Jeans</button>
+          <button mat-menu-item>Casual Trouser</button>
+          <button mat-menu-item>Formal Trouser</button>
+        </mat-menu>
+        <mat-menu #mfootwear="matMenu">
+          <button mat-menu-item>Sport Shoe</button>
+          <button mat-menu-item>Casual Shoe</button>
+          <button mat-menu-item>Formal Shoe</button>
+        </mat-menu>
+        <!-- women navigation -->
+        <a mat-button [matMenuTriggerFor]="women">WOMEN</a>
+        <mat-menu #women="matMenu">
+          <button mat-menu-item [matMenuTriggerFor]="western">Western Wear</button>
+          <button mat-menu-item [matMenuTriggerFor]="wfootwear">Footwear</button>
+        </mat-menu>
+        <mat-menu #western="matMenu">
+          <button mat-menu-item>T-shirts</button>
+          <button mat-menu-item>Shirts</button>
+          <button mat-menu-item>Tops</button>
+        </mat-menu>
+        <mat-menu #wfootwear="matMenu">
+          <button mat-menu-item>Casual Shoe</button>
+          <button mat-menu-item>Heels</button>
+          <button mat-menu-item>Flats</button>
+        </mat-menu>
+        <!-- Kids navigation -->
+        <a mat-button [matMenuTriggerFor]="kid">KIDS</a>
+        <mat-menu #kid="matMenu">
+          <button mat-menu-item [matMenuTriggerFor]="bClothing">Boys Clothing</button>
+          <button mat-menu-item [matMenuTriggerFor]="gClothing">Girls Clothing</button>
+          <button mat-menu-item [matMenuTriggerFor]="bFootwear">Boys Footwear</button>
+          <button mat-menu-item [matMenuTriggerFor]="gFootwear">Girls Footwear</button>
+        </mat-menu>
+        <mat-menu #bClothing="matMenu">
+          <button mat-menu-item>T-shirts</button>
+          <button mat-menu-item>Shirts</button>
+          <button mat-menu-item>Jeans</button>
+        </mat-menu>
+        <mat-menu #gClothing="matMenu">
+          <button mat-menu-item>Dresses</button>
+          <button mat-menu-item>Tops</button>
+          <button mat-menu-item>T-shirts</button>
+        </mat-menu>
+        <mat-menu #bFootwear="matMenu">
+          <button mat-menu-item>Casual Shoe</button>
+          <button mat-menu-item>Sport Shoe</button>
+          <button mat-menu-item>Sandals</button>
+        </mat-menu>
+        <mat-menu #gFootwear="matMenu">
+          <button mat-menu-item>Casual Shoe</button>
+          <button mat-menu-item>Heels</button>
+          <button mat-menu-item>Flats</button>
+        </mat-menu>
+      </div>
+    </mat-toolbar>
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>My Ecommerce</span>
+      <div class="right-desktop-nav">
+        <a>
+          <form [formGroup]="searchForm" (submit)="searchQuery()">
+            <div class="my-form-group">
+              <input class="my-form-control" [ngClass]="{'width-500':myInputWidth}" (focus)="changeWidth()"
+                placeholder="product,brands and more" (blur)="changeWidth()" formControlName="query" required>
+              <button mat-icon-button>
+                <mat-icon aria-label="Example icon-button with a heart icon">search</mat-icon>
+              </button>
+            </div>
+          </form>
+        </a>
+        <a *ngIf="!(isHandset$ | async)">
+          <span>
+            <mat-icon>favorite</mat-icon>
+          </span>
+          <span>WishList</span>
+        </a>
+        <a *ngIf="!(isHandset$ | async)">
+          <span>
+            <mat-icon>shopping_cart</mat-icon>
+          </span>
+          <span>Cart</span>
+        </a>
+        <a *ngIf="!(isHandset$ | async)">
+          <span>
+            <mat-icon>person</mat-icon>
+          </span>
+          <span>SignIn</span>
+        </a>
+      </div>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

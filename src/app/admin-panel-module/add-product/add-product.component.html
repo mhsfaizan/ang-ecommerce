@@ -1,0 +1,91 @@
+<section class="add-product">
+  <mat-card>
+    <mat-tab-group animationDuration="1000ms" [selectedIndex]="tabIndex">
+      <mat-tab label="Product Information">
+        <div class="add-product-1">
+          <form [formGroup]="product1Form" class="form-sec-1" (submit)="save()">
+            <mat-form-field appearance="outline" style="flex-basis:47%">
+              <mat-label>Product Name</mat-label>
+              <input matInput placeholder="Placeholder" formControlName="productName">
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="flex-basis:47%">
+              <mat-label>Brand Name</mat-label>
+              <input matInput placeholder="Placeholder" formControlName="brandName">
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="flex-basis:47%">
+              <mat-select placeholder="Category" #cat formControlName="category"
+                (selectionChange)="updateCat(cat.value.subCategories)">
+                <mat-option *ngFor="let category of categories;" [value]="category">
+                  {{category.category}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="flex-basis:47%">
+              <mat-select placeholder="subCategory" formControlName="subCategory">
+                <mat-option *ngFor="let subCat of subCategories" [value]="subCat">
+                  {{subCat}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="flex-basis:100%">
+              <mat-label>Descritption</mat-label>
+              <textarea matInput placeholder="Placeholder" formControlName="description"></textarea>
+            </mat-form-field>
+            <div style="flex-basis:100%;margin-bottom: 2rem;">
+              <button type="button" mat-raised-button color="accent" (click)="image.click()">Images<mat-icon>add
+                </mat-icon></button>
+              <input type="file" accept="images/*" #image hidden multiple (change)="addImage(commonImages,image)" />
+              <div class="images" *ngIf="commonImages" style="margin-top: 1rem">
+                <div class="image" *ngFor="let image of commonImages;let index=index">
+                  <img [src]="image.url" class="image-fit" />
+                  <button type="button" mat-mini-fab color="primary" (click)="removeImage(commonImages,index)">
+                    <mat-icon>remove</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div>
+              <button mat-raised-button color="primary" [disabled]="product1Form.invalid">Save</button>&nbsp;&nbsp;
+              <button type="button" mat-raised-button color="accent" [disabled]="product1Form.invalid"
+                (click)="next()">Next</button>
+            </div>
+          </form>
+        </div>
+      </mat-tab>
+      <mat-tab label="Price">
+        <br />
+        <br />
+        <button mat-raised-button color="primary" (click)="openDia()">Add Product Attribute</button>
+        <br />
+        <br />
+        <div *ngIf="productInfo2.length!=0">
+          <div class="images" style="margin-top: 1rem">
+            <div class="image" *ngFor="let image of productInfo2;let index=index">
+              <img *ngIf="image.images.length" [src]="image.images[0].url" class="image-fit"  />
+              <button type="button" mat-mini-fab color="primary" (click)="removeImage(productInfo2,index)">
+                <mat-icon>remove</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+        <button mat-raised-button *ngIf="productInfo2.length!=0" (click)="next()" color="primary">Next</button>
+      </mat-tab>
+      <mat-tab label="Final">
+        <div *ngIf="(productInfo&&productInfo2.length)">
+          <br />
+          <div>
+            <mat-label>You done !</mat-label>
+          </div>
+          <br />
+          <button mat-raised-button color="primary" (click)="upload()">Upload</button>
+          <br />
+        </div>
+        <div *ngIf="!(productInfo&&productInfo2.length)">
+          <br/>
+          <br/>
+          Please Enter the Product Info Before upload !
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+</section>

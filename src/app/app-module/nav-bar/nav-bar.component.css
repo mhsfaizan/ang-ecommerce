@@ -1,0 +1,73 @@
+.sidenav-container {
+  height: 100%;
+  background-color: #eee;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.top-nav {
+  height: 50px;
+}
+
+/* nav css */
+
+.right-desktop-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.right-desktop-nav a, .left-nav a {
+  padding: 0 1rem;
+  font-weight: 200;
+  font-size: 1rem;
+}
+
+.right-desktop-nav a span {
+  display: block;
+  margin-bottom: -0.7rem;
+  text-align: center;
+}
+
+.right-desktop-nav a mat-icon {
+  font-size: 20px!important;
+}
+
+.my-form-group {
+  position: relative
+}
+
+.my-form-group button {
+  position: absolute;
+  right: 0;
+  color: #bdbdbd;
+  top: -2px;
+}
+
+.my-form-control {
+  border: 0;
+  border-radius: 5px;
+  outline: none;
+  padding: 8px 10px;
+  width: 200px;
+  transition: .3s all linear;
+}
+/* menMenu */
+
+@media(min-width:700px) {
+  .width-500 {
+    width: 500px;
+  }
+}
